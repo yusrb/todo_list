@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto p-6">
+  <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+    <p class="text-xl mb-4">Yakin ingin menghapus <span class="font-semibold">{{ task.judul }}</span>?</p>
+
+    <form action="" method="post" class="inline-block">
+      {% csrf_token %}
+      <input type="submit" value="Ya" class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 cursor-pointer">
+    </form>
+    <a href="{% url "base:index" %}" class="inline-block ml-4">
+      <input type="button" value="Tidak" class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 cursor-pointer">
+    </a>
+  </div>
+</div>
+{% endblock content %}
