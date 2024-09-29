@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mx-auto p-6">
+  <!-- Header -->
+  <div class="flex justify-between items-center mb-6">
+    {% if user.is_authenticated %}
+      <form action="{% url 'user:logout' %}" method="post" class="flex justify-end">
+        {% csrf_token %}
+        <button type="submit" class="px-2 py-1 bg-red-500 text-white font-semibold rounded-md border border-red-600 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400">Logout</button>
+      </form>
+    {% else %}
+      <a href="{% url 'user:login' %}" class="px-2 py-1 bg-blue-500 text-white font-semibold rounded-md border border-blue-600 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">Login</a>
+    {% endif %}
+  </div>
+    
+  <!-- Judul -->
+  <h1 class="text-4xl font-bold mb-8 text-gray-800">Daftar Item To Do List Saya</h1>
+  
+  {% if user.is_authenticated %}
+    <h2 class="text-2xl mb-4 text-gray-700">Hallo, {{ user }}</h2>
+  {% else %}
+    <h2 class="text-2xl mb-4 text-gray-700">Hallo Guest.</h2>
+  {% endif %}
+
+  
+  {% if user.is_authenticated %}
+    <p class="mb-8 text-gray-600">Anda belum menyelesaikan 
+      <span class="{% if count > 0 %}underline text-green-600{% else %}text-gray-800{% endif %}">{{ count }}</span> tugas
+    </p>
+    {% else %}
+    <p class="mb-4 text-gray-500">Silahkan Login terlebih dahulu sebelum membuat daftar list</p>
+  {% endif %}
+    
+
+  <!-- Search Form -->
+  <form action="" method="get" class="mb-8 flex">
+    <input type="text" name="search-value" placeholder="Search..." class="w-full p-3 border border-gray-500 rounded-l-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500">
+    <input type="submit" value="Search" class="p-3 bg-blue-500 text-white rounded-r-md border border-blue-600 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer">
+  </form>
+
+  <!-- Create Button -->
+  <div class="mb-8 flex justify-center text-center">
+    <a href="{% url 'base:create' %}" class="w-full py-2 bg-green-500 text-white font-semibold rounded-md border border-green-600 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400">Tambah</a>
+  </div>
+
+  <!-- Task List -->
+  <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+    <ul class="divide-y divide-gray-200">
+      {% if user.is_authenticated %}
+        {% for task in tasks %}
+        <a href="{% url "base:update" task.pk  %}">
+          <li class="px-4 py-3 flex items-center justify-between {{ task.complete|yesno:'bg-gray-100, bg-white' }} border-b shadow-md">
+            <div class="flex items-center space-x-4">
+              <div>
+                {% if task.complete %}
+                  <del>{{ task.judul }}</del>
+                {% else %}
+                  {{ task.judul }}
+                {% endif %}
+              </div>
+            </div>
+          </a>
+            <div class="flex space-x-2 ml-auto">
+              <a href="{% url "base:delete" task.pk %}">
+                <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded-md border border-red-600 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400">
+                  X
+                </button>
+              </a>
+            </div>
+          </li>
+        {% empty %}
+          <li class="px-4 py-4 text-center text-gray-500">Task tidak ditemukan</li>
+        {% endfor %}
+      {% endif %}
+    </ul>
+  </div>
+</div>
+{% endblock content %}
