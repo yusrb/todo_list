@@ -1,12 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
+<<<<<<< HEAD
 <div class="w-full p-6 bg-gray-100">
+=======
+<div class="w-full p-6 bg-white">
+>>>>>>> e8ba150 (Updated)
   <h1 class="text-3xl font-bold mb-6 text-center">{{ judul }}</h1>
 
   <form action="" method="post" class="w-full bg-white p-8 shadow-lg rounded-md mx-auto space-y-6 max-w-screen-lg">
     {% csrf_token %}
     <div class="space-y-4">
+<<<<<<< HEAD
+=======
+      {{ form.non_field_errors }}
+>>>>>>> e8ba150 (Updated)
       {% for field in form %}
       <div class="flex flex-col space-y-1">
         <label class="text-lg font-medium">{{ field.label }}</label>
@@ -23,8 +31,15 @@
     </div>
 
     <div class="text-center">
+<<<<<<< HEAD
       <button type="submit" class="mt-4 px-6 py-2 bg-blue-600 text-white text-lg font-semibold rounded-md shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">{{ submit }}</button>
     </div>
   </form>
 </div>   
+=======
+      <button type="submit" class="mt-4 px-6 py-2 bg-blue-600 text-white text-lg font-semibold rounded-md shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">{{submit}}</button>
+    </div>
+  </form>
+</div>
+>>>>>>> e8ba150 (Updated)
 {% endblock content %}

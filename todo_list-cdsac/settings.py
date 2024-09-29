@@ -42,22 +42,15 @@ INSTALLED_APPS = [
     'django_browser_reload',
     'user',
     'base',
-<<<<<<< HEAD
-=======
     'crispy_forms',
     'crispy_bootstrap5'
->>>>>>> e8ba150 (Updated)
 ]
 
 TAILWIND_APP_NAME = 'theme'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
-<<<<<<< HEAD
-NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
-=======
 NPM_BIN_PATH = "/usr/bin/npm"
->>>>>>> e8ba150 (Updated)
 
 ALLOWED_HOSTS = [
     '127.0.0.1', 
@@ -65,11 +58,8 @@ ALLOWED_HOSTS = [
     '1476-36-65-214-250.ngrok-free.app'
 ]
 
-<<<<<<< HEAD
-=======
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
->>>>>>> e8ba150 (Updated)
 CSRF_TRUSTED_ORIGINS = [
     'https://910b-103-166-8-242.ngrok-free.app'
 ]

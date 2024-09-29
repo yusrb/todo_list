@@ -12,7 +12,11 @@
       {% for field in form %}
       <div class="flex flex-col">
         <label for="{{ field.id_for_label }}" class="text-lg font-medium text-gray-700 mb-1">{{ field.label }}</label>
+<<<<<<< HEAD
         {{ field|safe }}
+=======
+        {{ field }}
+>>>>>>> e8ba150 (Updated)
         {% if field.errors %}
         <div class="text-red-500 text-sm mt-1">
           {% for error in field.errors %}
